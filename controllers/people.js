@@ -38,5 +38,14 @@ router.post("/", async (request, response) => {
     }
 })
 
+// People show route
+router.get("/:id", async(request, response) => {
+    try {
+        response.json(await People.findById(request.params.id))
+    } catch (error) {
+        response.status(400).json(error)
+    }
+})
+
 
 module.exports = router
